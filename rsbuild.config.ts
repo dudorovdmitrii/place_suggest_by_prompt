@@ -6,4 +6,9 @@ export default defineConfig({
     title: "Нейрокомпьютерные системы",
   },
   plugins: [pluginReact()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:8088",
+    },
+  },
 });

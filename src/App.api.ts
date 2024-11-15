@@ -18,13 +18,11 @@ export interface ApiResponseError {
 }
 
 export class ApiClient {
-  static BASE_URL = "http://localhost:8080";
-
   static async getSuggestions(
     region: string,
     prompt: string
   ): Promise<Suggestion[]> {
-    return await axios.get(`${this.BASE_URL}/api/v1/ranking`, {
+    return await axios.get("/api/v1/ranking", {
       params: { region, prompt },
     });
   }
