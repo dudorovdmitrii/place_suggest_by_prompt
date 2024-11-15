@@ -75,7 +75,7 @@ const App = () => {
       return;
     }
     getSuggestions();
-  }, []);
+  }, [isSearchDisabled, getSuggestions]);
 
   const getSuggestionsContent = () => {
     if (suggestionsError) {
