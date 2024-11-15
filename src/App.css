@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  width: 80vw;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.select {
+  min-width: 300px;
+}
+
+.g-table__table {
+  width: 100%;
+}
+
+.g-table__cell {
+  white-space: normal !important;
+}
