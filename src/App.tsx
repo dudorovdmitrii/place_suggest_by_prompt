@@ -10,7 +10,7 @@ import {
   TableColumnConfig,
   TextInput,
 } from "@gravity-ui/uikit";
-import { MOCK_SUGGESTIONS, REGIONS } from "./App.constants";
+import { REGIONS } from "./App.constants";
 import { Suggestion, useSuggestions } from "./App.api";
 import { toaster } from "@gravity-ui/uikit/toaster-singleton-react-18";
 
@@ -51,6 +51,7 @@ const App = () => {
   const isSearchDisabled = selectedRegion === null || !prompt;
 
   const {
+    data: suggestionsData,
     refetch: getSuggestions,
     isLoading: isSuggestionsLoading,
     error: suggestionsError,
@@ -96,7 +97,7 @@ const App = () => {
       );
     }
 
-    return <Table data={MOCK_SUGGESTIONS} columns={COLUMNS} />;
+    return <Table data={suggestionsData ?? []} columns={COLUMNS} />;
   };
 
   return (
