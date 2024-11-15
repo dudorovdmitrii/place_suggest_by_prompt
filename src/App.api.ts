@@ -6,6 +6,7 @@ export interface Suggestion {
   name: string;
   address: string;
   review: string;
+  rating: number;
 }
 
 export interface GetSuggestionsResponse {

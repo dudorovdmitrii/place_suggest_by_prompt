@@ -38,6 +38,11 @@ const COLUMNS: TableColumnConfig<Suggestion>[] = [
     id: "review",
     name: "Отзыв",
   },
+  {
+    id: "rating",
+    name: "Рейтинг",
+    align: "center",
+  },
 ];
 
 const App = () => {
