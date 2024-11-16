@@ -54,6 +54,7 @@ const App = () => {
     data: suggestionsData,
     refetch: getSuggestions,
     isLoading: isSuggestionsLoading,
+    isFetching: isSuggestionsFetching,
     error: suggestionsError,
   } = useSuggestions(selectedRegion ?? "", prompt);
 
@@ -97,7 +98,17 @@ const App = () => {
       );
     }
 
-    return <Table data={suggestionsData ?? []} columns={COLUMNS} />;
+    if (!suggestionsData) {
+      return null;
+    }
+
+    return (
+      <Table
+        className={isSuggestionsFetching ? "opacity" : undefined}
+        data={suggestionsData}
+        columns={COLUMNS}
+      />
+    );
   };
 
   return (
@@ -119,7 +130,7 @@ const App = () => {
         <Button
           view="action"
           onClick={onSearchClick}
-          loading={isSuggestionsLoading}
+          loading={isSuggestionsFetching}
         >
           Найти
         </Button>

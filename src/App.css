@@ -23,3 +23,7 @@ body {
 .g-table__cell {
   white-space: normal !important;
 }
+
+.opacity {
+  opacity: 0.5;
+}

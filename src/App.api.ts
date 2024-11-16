@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
 
 export interface Suggestion {
@@ -24,6 +24,7 @@ export class ApiClient {
   ): Promise<AxiosResponse<GetSuggestionsResponse>> {
     return await axios.get("/api/v1/ranking", {
       params: { region, prompt },
+      timeout: 2 * 1000,
     });
   }
 }
@@ -31,8 +32,9 @@ export class ApiClient {
 export const useSuggestions = (region: string, prompt: string) => {
   return useQuery({
     queryFn: () => ApiClient.getSuggestions(region, prompt),
-    queryKey: [region, prompt],
+    queryKey: [],
     select: (response) => response.data.data,
     enabled: false,
+    placeholderData: keepPreviousData,
   });
 };
